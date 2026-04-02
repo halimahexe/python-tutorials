@@ -57,3 +57,22 @@ def check_for_win(squares):
         return True
     else:
         return False
+
+
+def player_input(squares, key, mark):
+    """Old player input function for first attempt"""
+    if str.isdigit(key) and int(key):
+        num = int(key)
+        if num in range(1, 10) and squares[num] == ' ':
+            squares[num] = mark
+            print()
+        elif num not in range(1, 10):
+            print('Invalid square. Please select a number between 1 and 9')
+            choice = input()
+            player_input(squares, choice, mark)
+        elif squares[num] != ' ':
+            print('There is already a mark here. Please pick another square.')
+            choice = input()
+            player_input(squares, choice, mark)
+    elif key == 'q':
+        print('Game ended. Thanks for playing')
